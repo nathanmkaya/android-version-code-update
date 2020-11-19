@@ -1,6 +1,6 @@
 {
   "name": "android-version-code-update",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "TypeScript template action",
   "main": "lib/main.js",
