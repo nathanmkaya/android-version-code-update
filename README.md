@@ -22,7 +22,7 @@ The service account json in plain text, provided via a secret, etc.
 ## Example usage
 
 ```yaml
-uses: nathanmkaya/android-version-code-update@v1
+uses: nathanmkaya/android-version-code-update@v0.1
 with:
   serviceAccountJson: ${{ SERVICE_ACCOUNT_JSON }}
   packageName: com.example.MyApp
