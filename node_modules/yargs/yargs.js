@@ -231,7 +231,6 @@ function Yargs (processArgs, cwd, parentRequire) {
   function populateParserHintArray (type, keys, value) {
     keys = [].concat(keys)
     keys.forEach((key) => {
-      key = sanitizeKey(key)
       options[type].push(key)
     })
   }
@@ -287,8 +286,8 @@ function Yargs (processArgs, cwd, parentRequire) {
 
   function populateParserHintObject (builder, isArray, type, key, value) {
     if (Array.isArray(key)) {
-      const temp = Object.create(null)
       // an array of keys with one value ['x', 'y', 'z'], function parse () {}
+      const temp = {}
       key.forEach((k) => {
         temp[k] = value
       })
@@ -299,7 +298,6 @@ function Yargs (processArgs, cwd, parentRequire) {
         builder(k, key[k])
       })
     } else {
-      key = sanitizeKey(key)
       // a single key value pair 'x', parse() {}
       if (isArray) {
         options[type][key] = (options[type][key] || []).concat(value)
@@ -307,13 +305,6 @@ function Yargs (processArgs, cwd, parentRequire) {
         options[type][key] = value
       }
     }
-  }
-
-  // TODO(bcoe): in future major versions move more objects towards
-  // Object.create(null):
-  function sanitizeKey (key) {
-    if (key === '__proto__') return '___proto___'
-    return key
   }
 
   function deleteFromParserHintObject (optionKey) {
