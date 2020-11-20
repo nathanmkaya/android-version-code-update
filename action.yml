@@ -1,11 +1,16 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Update Android Version Code'
+description: 'Fetch version codes from play store and depending on the latest used updates your gradle file with the next available integer'
+author: 'Nathan Mkaya'
 inputs:
-  milliseconds: # change this
+  serviceAccountJson:
+    description: "The service account json private key file to authorize the upload request"
+    required: false
+  serviceAccountJsonPlainText:
+    description: "The raw json text of the service account private key to authorize the upload request"
+    required: false
+  packageName:
+    description: "The package name, or Application Id, of the app you are uploading"
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
 runs:
   using: 'node12'
   main: 'dist/index.js'
