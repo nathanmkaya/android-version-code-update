@@ -21,5 +21,5 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          serviceAccountJson: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          serviceAccountJsonRaw: ${{ secrets.SERVICE_ACCOUNT_JSON }}
           packageName: ${{ secrets.APP_ID }}
