@@ -21,11 +21,12 @@ export async function fetchVersionCode(options: Options): Promise<Number> {
     });
 
     const tracks = await androidPublisher.edits.tracks.list({
+        auth: options.auth,
         packageName: options.applicationId,
         editId: appEdit.data.id!
     })
 
-    var versionCodes: Number[] = []
+    var versionCodes: number[] = []
 
     tracks.data.tracks?.forEach((track) => {
         track.releases?.forEach((release) => {
@@ -34,8 +35,8 @@ export async function fetchVersionCode(options: Options): Promise<Number> {
     })
 
     if(versionCodes.length > 0){
-        return Math.max.apply(versionCodes);
+        return Math.max.apply(Math, versionCodes);
     } else {
-        return 0;
+        return 1;
     }
 }
