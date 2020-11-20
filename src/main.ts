@@ -46,7 +46,7 @@ async function run(): Promise<void> {
     await UpdateVersionCode(versionCode)
 
   } catch (error) {
-    core.error(error)
+    core.debug(error)
     core.setFailed(error.message)
   }
 }
